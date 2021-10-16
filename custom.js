@@ -1,6 +1,13 @@
 ;((document, window) => {
 	"use strict";
 
+	const lang = {
+		'reply': 'Reply',
+		'sending': 'Sending…',
+		'added': 'Comment was successfuly added!',
+		'error': 'Error while adding comment!'
+	};
+
 	// const $ = document.querySelector.bind(document);
 	// const $$ = document.querySelectorAll.bind(document);
 
@@ -21,7 +28,7 @@
 		let template = `<div class='comment-row' id="comment-${id}">							
 							<div class='comment-info'><span class='posted-by'>${name}</span> &middot; <span class='posted-at'>${formatDatetime(date)}</span></div>
 							<div class='comment-text'>${reply}${text}</div>
-							<div><a class='btn-reply' data-id="${id}">Reply</a></div>
+							<div><a class='btn-reply' data-id="${id}">${lang.reply}</a></div>
 						</div>`;
 		return template;
 	}
@@ -116,7 +123,7 @@
 		let origContent = $submit.value;
 
 		$submit.setAttribute("disabled", true);
-		$submit.value = "Sending...";
+		$submit.value = lang.sending;
 
 		$message.css().remove('msg-success');
 		$message.css().remove('msg-error');
@@ -133,7 +140,7 @@
 			if (response.ok) {
 		
 				$message.css().add('msg-success');
-				$message.html('Comment was successfuly added!');
+				$message.html(lang.added);
 				
 				el("#name").node().value = "";
 				el("#comment").node().value = "";
@@ -142,7 +149,7 @@
 				listComment();
 			} else {
 				$message.css().add('msg-error');
-				$message.html('Error adding comment!');
+				$message.html(lang.error);
 				return false;
 			}
 			console.log(response);
