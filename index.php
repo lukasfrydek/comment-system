@@ -17,15 +17,15 @@ require_once('start.php');
 	<div class="comment-form-container">
 		<form id="frm-comment">
 			<div class="input-row">
-				<textarea class="input-field input-area" type="text" name="comment" id="comment" placeholder="Nový komentář"></textarea>
+				<textarea class="input-field input-area" type="text" name="comment" id="comment" placeholder="New Comment"></textarea>
 			</div>
 			<div class="input-row">
 				<input type="hidden" name="token" value="<?= token::generate(FORM_TOKEN_NAME); ?>">
 				<input type="hidden" name="comment_id" id="commentId">
-				<input class="input-field" type="text" name="name" id="name" placeholder="Jméno">
+				<input class="input-field" type="text" name="name" id="name" placeholder="Name">
 			</div>
 			<div>
-				<input type="submit" class="btn-submit" value="Odeslat">
+				<input type="submit" class="btn-submit" value="Add comment">
 				<div id="comment-message"></div>
 			</div>
 		</form>

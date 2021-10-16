@@ -21,7 +21,7 @@
 		let template = `<div class='comment-row' id="comment-${id}">							
 							<div class='comment-info'><span class='posted-by'>${name}</span> &middot; <span class='posted-at'>${formatDatetime(date)}</span></div>
 							<div class='comment-text'>${reply}${text}</div>
-							<div><a class='btn-reply' data-id="${id}">Odpovědět</a></div>
+							<div><a class='btn-reply' data-id="${id}">Reply</a></div>
 						</div>`;
 		return template;
 	}
@@ -116,7 +116,7 @@
 		let origContent = $submit.value;
 
 		$submit.setAttribute("disabled", true);
-		$submit.value = "Odesílá se...";
+		$submit.value = "Sending...";
 
 		$message.css().remove('msg-success');
 		$message.css().remove('msg-error');
@@ -133,7 +133,7 @@
 			if (response.ok) {
 		
 				$message.css().add('msg-success');
-				$message.html('Komentář úspěšně přidán!');
+				$message.html('Comment was successfuly added!');
 				
 				el("#name").node().value = "";
 				el("#comment").node().value = "";
@@ -142,7 +142,7 @@
 				listComment();
 			} else {
 				$message.css().add('msg-error');
-				$message.html('Chyba při přidávání komentáře!');
+				$message.html('Error adding comment!');
 				return false;
 			}
 			console.log(response);
